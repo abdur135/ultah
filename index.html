@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#1d0e20">
+  <title>Selamat Ulang Tahun</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="fx"></canvas>
+  <audio id="audio" src="musik.mp3" loop preload="none"></audio>
+  <button class="btn" id="musicBtn" type="button">Musik</button>
+
+  <!-- 0. Kunci: hitung mundur -->
+  <section class="page on" id="lock">
+    <div class="inner">
+      <p class="lead">Belum waktunya <span id="lockName"></span>.</p>
+      <div class="countdown gold" id="countdown">00:00:00</div>
+      <p class="lead">Kejutannya terbuka tepat tengah malam.</p>
+    </div>
+  </section>
+
+  <!-- 1. Sampul -->
+  <section class="page" id="cover">
+    <div class="inner">
+      <div class="age gold" id="age"></div>
+      <p class="lead">Selamat ulang tahun</p>
+      <div class="name gold" id="name"></div>
+    </div>
+  </section>
+
+  <!-- 2. Surat -->
+  <section class="page" id="letter">
+    <div class="inner">
+      <h2>Sebuah surat kecil</h2>
+      <div class="paper" id="paper"></div>
+    </div>
+  </section>
+
+  <!-- 3. Harapan -->
+  <section class="page" id="wishes">
+    <div class="inner top">
+      <h2>Dua puluh dua harapan</h2>
+      <ol class="wish-list" id="wishList"></ol>
+    </div>
+  </section>
+
+  <!-- 4. Foto -->
+  <section class="page" id="photos">
+    <div class="inner top">
+      <h2>Beberapa kenangan</h2>
+      <h2>🤪</h2>
+      <div class="polaroids" id="polaroids"></div>
+    </div>
+  </section>
+
+  <!-- 5. Hadiah -->
+  <section class="page" id="gift">
+    <div class="inner">
+      <h2>Hadiah untukmu</h2>
+      <p class="lead">Gosok pelan-pelan, ya.</p>
+
+      <div class="foil-box" id="foilBox">
+        <div class="under">
+          <img id="qris" src="qris.jpeg" alt="QRIS hadiah ulang tahun">
+          <p class="missing" id="qrisMissing">Taruh gambar QRIS di folder yang sama dengan index.html, namanya <b>qris.png</b></p>
+        </div>
+        <canvas id="foil" aria-label="Lapisan foil emas, gosok untuk melihat QRIS"></canvas>
+      </div>
+
+      <div class="after" id="after">
+        <p>Scan QRIS ini dengan m-banking atau e-wallet apa saja. Isinya untukmu, pakai sesukamu.</p>
+        <a class="btn" href="qris.jpeg" download="qris-hadiah.png">Simpan QRIS</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Lilin -->
+  <section class="page" id="candle">
+    <div class="inner">
+      <h2 id="candleTitle">Buat permohonan dulu</h2>
+      <svg viewBox="0 0 120 220" width="130" aria-hidden="true">
+        <g class="flame" id="flame">
+          <path d="M60 16C75 42 79 58 60 76C41 58 45 42 60 16Z" fill="#ffd36b"/>
+          <path d="M60 42C68 54 68 62 60 72C52 62 52 54 60 42Z" fill="#fff4c7"/>
+        </g>
+        <rect x="58" y="74" width="4" height="18" fill="#4a3a3a"/>
+        <rect x="36" y="90" width="48" height="110" rx="4" fill="#fbf4e6"/>
+        <rect x="36" y="120" width="48" height="8" fill="#d98a9b"/>
+        <rect x="36" y="150" width="48" height="8" fill="#d98a9b"/>
+        <rect x="18" y="198" width="84" height="10" rx="5" fill="#e6cf9c"/>
+      </svg>
+      <p class="lead" id="candleText">Pejamkan mata sebentar, lalu tiup lilinnya.</p>
+      <button class="btn primary" id="blowBtn" type="button">Tiup lilin</button>
+    </div>
+  </section>
+
+  <!-- Navigasi bawah -->
+  <nav id="nav" aria-label="Navigasi halaman">
+    <button class="btn" id="backBtn" type="button">Kembali</button>
+    <div class="dots" id="dots" aria-hidden="true"></div>
+    <button class="btn primary" id="nextBtn" type="button">Mulai</button>
+  </nav>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

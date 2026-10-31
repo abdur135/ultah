@@ -1,0 +1,369 @@
+/* ==========================================================
+   1. Dasar
+   ========================================================== */
+:root {
+  --ink: #1d0e20;
+  --plum: #3a1c3d;
+  --gold: #e6cf9c;
+  --gold-dark: #b8924a;
+  --rose: #d98a9b;
+  --ivory: #fbf4e6;
+  --serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --sans: 'Jost', 'Segoe UI', system-ui, sans-serif;
+  --pad: 28px;
+}
+
+* { box-sizing: border-box; margin: 0; }
+
+html, body { height: 100%; }
+
+body {
+  background: radial-gradient(90% 70% at 50% 0%, var(--plum), var(--ink)) fixed;
+  color: var(--ivory);
+  font-family: var(--sans);
+  font-weight: 300;
+  overflow: hidden;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* bingkai tipis di pinggir layar */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 12px;
+  border: 1px solid rgba(230, 207, 156, .35);
+  pointer-events: none;
+  z-index: 5;
+}
+
+h2 {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.9rem, 7vw, 2.8rem);
+  color: var(--gold);
+  margin-bottom: 24px;
+}
+
+.lead {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(1.2rem, 4.6vw, 1.4rem);
+  line-height: 1.45;
+  opacity: .92;
+}
+
+.gold {
+  background: linear-gradient(160deg, #f6e7bd, #d3b26b 55%, #a9803d);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ==========================================================
+   2. Halaman
+   ========================================================== */
+.page {
+  position: fixed;
+  inset: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: calc(34px + env(safe-area-inset-top, 0px)) var(--pad) 130px;
+  display: none;
+  opacity: 0;
+}
+
+.page.on {
+  display: block;
+  animation: fade-in .9s ease forwards;
+}
+
+@keyframes fade-in { to { opacity: 1; } }
+
+.inner {
+  min-height: 100%;
+  max-width: 540px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.inner.top { justify-content: flex-start; }
+
+/* ==========================================================
+   3. Tombol
+   ========================================================== */
+.btn {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: .95rem;
+  color: var(--gold);
+  background: rgba(29, 14, 32, .75);
+  border: 1px solid var(--gold-dark);
+  min-height: 44px;
+  padding: 10px 22px;
+  border-radius: 999px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(6px);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn.primary {
+  background: linear-gradient(160deg, #f1dfb0, #c9a45e);
+  color: #2b1830;
+  border-color: transparent;
+  font-weight: 500;
+}
+
+.btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+/* ==========================================================
+   4. Halaman kunci dan sampul
+   ========================================================== */
+.countdown {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(2.6rem, 14vw, 4.6rem);
+  letter-spacing: .04em;
+  margin: 18px 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.age {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(8rem, 42vw, 17rem);
+  line-height: .82;
+  margin-bottom: 14px;
+}
+
+.name {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: clamp(2.1rem, 9vw, 3.4rem);
+  margin-top: 8px;
+  overflow-wrap: anywhere;
+}
+
+/* ==========================================================
+   5. Surat
+   ========================================================== */
+.paper {
+  width: 100%;
+  background: var(--ivory);
+  color: #3a2a3d;
+  padding: 34px 28px;
+  text-align: left;
+  box-shadow: 0 0 0 6px rgba(230, 207, 156, .18), 0 0 0 7px var(--gold-dark);
+}
+
+.paper p {
+  font-family: var(--serif);
+  font-size: clamp(1.15rem, 4.4vw, 1.3rem);
+  line-height: 1.65;
+  opacity: 0;
+}
+
+.paper p + p { margin-top: 16px; }
+
+.page.on .paper p { animation: fade-in 1s forwards; }
+.paper p:nth-child(1) { animation-delay: .4s !important; }
+.paper p:nth-child(2) { animation-delay: 1.8s !important; }
+.paper p:nth-child(3) { animation-delay: 3.2s !important; }
+.paper p:nth-child(4) { animation-delay: 4.6s !important; }
+
+.paper .sign { font-style: italic; color: #9a6a2e; text-align: right; }
+
+/* ==========================================================
+   6. Harapan
+   ========================================================== */
+.wish-list { list-style: none; padding: 0; width: 100%; text-align: left; }
+
+.wish-list li {
+  display: grid;
+  grid-template-columns: 2.6rem 1fr;
+  gap: 6px;
+  padding: 13px 0;
+  border-bottom: 1px solid rgba(230, 207, 156, .2);
+  font-family: var(--serif);
+  font-size: clamp(1.1rem, 4.3vw, 1.2rem);
+  line-height: 1.4;
+}
+
+.wish-list b {
+  font-weight: 400;
+  font-style: italic;
+  color: var(--gold);
+  font-size: 1.35rem;
+}
+
+/* ==========================================================
+   7. Foto
+   ========================================================== */
+.polaroids { display: flex; flex-direction: column; gap: 30px; width: 100%; }
+
+.polaroid {
+  background: var(--ivory);
+  color: #3a2a3d;
+  padding: 12px 12px 14px;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, .35);
+  transform: rotate(-2deg);
+}
+
+.polaroid:nth-child(even) { transform: rotate(1.6deg); }
+
+/* frame mengikuti ukuran foto, jadi screenshot tegak pun tampil utuh */
+.polaroid { width: fit-content; max-width: 100%; margin-inline: auto; }
+
+.polaroid img {
+  display: block;
+  max-width: 100%;
+  max-height: 70vh;
+  width: auto;
+  height: auto;
+}
+
+.polaroid .ph {
+  width: min(70vw, 320px);
+  aspect-ratio: 4 / 3;
+  display: grid;
+  place-items: center;
+  padding: 14px;
+  font-size: .85rem;
+  color: var(--ivory);
+  background: linear-gradient(135deg, var(--rose), var(--plum));
+}
+
+.polaroid figcaption {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.15rem;
+  margin-top: 10px;
+}
+
+/* ==========================================================
+   8. Hadiah (foil emas dan QRIS)
+   ========================================================== */
+.foil-box {
+  position: relative;
+  width: min(80vw, 320px, 48vh);
+  aspect-ratio: 1;
+  margin-top: 22px;
+  background: var(--ivory);
+  box-shadow: 0 0 0 6px rgba(230, 207, 156, .2), 0 0 0 7px var(--gold-dark), 0 18px 40px rgba(0, 0, 0, .4);
+  touch-action: none;
+}
+
+.foil-box .under { position: absolute; inset: 0; display: grid; place-items: center; padding: 14px; }
+.foil-box img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.foil-box .missing { display: none; color: #3a2a3d; font-size: .85rem; text-align: center; }
+
+.foil-box canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+  transition: opacity .9s;
+}
+
+.foil-box canvas.done { opacity: 0; pointer-events: none; }
+
+.after { max-height: 0; overflow: hidden; transition: max-height .8s; }
+.after.show { max-height: 380px; }
+.after p { margin: 24px 0 14px; font-size: 1rem; line-height: 1.6; }
+.after .hint { margin: 14px 0 0; font-size: .85rem; opacity: .75; }
+
+/* ==========================================================
+   9. Lilin
+   ========================================================== */
+.flame {
+  transform-origin: 60px 74px;
+  animation: flicker 1.6s ease-in-out infinite;
+  transition: opacity .6s;
+}
+
+@keyframes flicker { 50% { transform: scale(1.07, .94) rotate(2deg); } }
+
+#candleText { margin: 22px 0 18px; }
+
+/* ==========================================================
+   10. Navigasi, musik, confetti
+   ========================================================== */
+#nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: calc(26px + env(safe-area-inset-bottom, 0px));
+  display: none;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  z-index: 10;
+}
+
+.dots { display: flex; gap: 7px; }
+.dots i { width: 6px; height: 6px; border-radius: 50%; background: rgba(230, 207, 156, .3); }
+.dots i.active { background: var(--gold); }
+
+#musicBtn {
+  position: fixed;
+  top: calc(24px + env(safe-area-inset-top, 0px));
+  right: 26px;
+  z-index: 10;
+  display: none;
+  min-height: 36px;
+  padding: 6px 14px;
+  font-size: .85rem;
+}
+
+#fx { position: fixed; inset: 0; pointer-events: none; z-index: 20; }
+
+/* ==========================================================
+   11. Responsif
+   ========================================================== */
+
+/* tablet dan desktop */
+@media (min-width: 700px) {
+  .inner { max-width: 620px; }
+  .polaroids { display: grid; grid-template-columns: 1fr 1fr; gap: 34px 28px; }
+  .polaroid:last-child:nth-child(odd) { grid-column: 1 / -1; }
+  .paper { padding: 44px 40px; }
+}
+
+/* HP kecil */
+@media (max-width: 420px) {
+  :root { --pad: 20px; }
+  body::before { inset: 8px; }
+  .paper { padding: 28px 22px; }
+  #nav { gap: 8px; }
+  .btn { padding: 10px 16px; font-size: .9rem; }
+  #musicBtn { right: 20px; }
+}
+
+/* HP sangat kecil */
+@media (max-width: 340px) {
+  .dots { display: none; }
+}
+
+/* HP posisi landscape */
+@media (max-height: 520px) and (orientation: landscape) {
+  .page { padding-top: 22px; padding-bottom: 96px; }
+  .inner { justify-content: flex-start; }
+  .age { font-size: clamp(5rem, 30vh, 9rem); }
+  .foil-box { width: min(48vh, 260px); }
+  #nav { bottom: calc(14px + env(safe-area-inset-bottom, 0px)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flame { animation: none; }
+  .paper p { opacity: 1; animation: none !important; }
+}
